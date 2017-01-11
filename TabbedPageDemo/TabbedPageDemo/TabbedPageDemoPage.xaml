@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="TabbedPageDemo.TabbedPageDemoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:TabbedPageDemo;assembly=TabbedPageDemo"
+    Title="iLarm">
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <local:NonNullToBooleanConverter x:Key="booleanConverter" />
+        </ResourceDictionary>
+    </TabbedPage.Resources>
+    <TabbedPage.ItemTemplate>
+        <DataTemplate>
+           
+                <ContentPage Title="{Binding Name}" Icon="monkeyicon.png">
+                    <StackLayout Padding="5,25">
+                        <Label
+                            Font="Bold,Large"
+                            HorizontalOptions="Center"
+                            Text="{Binding Name}" />
+                        <Image
+                            HeightRequest="200"
+                            Source="{Binding PhotoUrl}"
+                            WidthRequest="200" />
+                        <StackLayout Padding="50,10">
+                            <StackLayout Orientation="Horizontal">
+                                <Label HorizontalOptions="FillAndExpand" Text="Family:" />
+                                <Label Font="Bold,Medium" Text="{Binding Family}" />
+                            </StackLayout>
+                            <StackLayout IsVisible="{Binding Subfamily, Converter={StaticResource booleanConverter}}" Orientation="Horizontal">
+                                <Label HorizontalOptions="FillAndExpand" Text="Subfamily:" />
+                                <Label Font="Bold,Medium" Text="{Binding Subfamily}" />
+                            </StackLayout>
+                            <StackLayout IsVisible="{Binding Tribe, Converter={StaticResource booleanConverter}}" Orientation="Horizontal">
+                                <Label HorizontalOptions="FillAndExpand" Text="Tribe:" />
+                                <Label Font="Bold,Medium" Text="{Binding Tribe}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label HorizontalOptions="FillAndExpand" Text="Genus:" />
+                                <Label Font="Bold,Medium" Text="{Binding Genus}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </ContentPage>
+           
+        </DataTemplate>
+    </TabbedPage.ItemTemplate>
+</TabbedPage>
